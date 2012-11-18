@@ -52,9 +52,10 @@ function git(varargin)
 % Contributors: (MR) Manu Raghavan
 %               (TH) Timothy Hansell
 
+gitpath = '/usr/local/bin/git ';
 
 % Test to see if git is installed
-[status,~] = system('git status');
+[status,~] = system([gitpath 'status']);
 % if git is in the path this will return a status of 0 or 128
 % depending on whether we are sitting in a repository or not
 % it will return a 1 only if the command is not found
@@ -71,7 +72,7 @@ function git(varargin)
         else
           prog = 'cat';
         end
-        [~,result] = system(['git ',arguments,' | ',prog]);
+        [~,result] = system([gitpath,arguments,' | ',prog]);
         disp(result)
     end
 end
